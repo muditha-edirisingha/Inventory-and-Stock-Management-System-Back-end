@@ -2,6 +2,9 @@ package edu.sliit.service;
 
 import edu.sliit.dto.Product;
 
+import java.util.List;
+
 public interface ProductService  {
-    public Product getProduct();
+    List<Product> getProduct();
+    void addProduct(Product product);
 }
