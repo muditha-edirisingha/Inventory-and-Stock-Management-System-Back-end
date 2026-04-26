@@ -2,9 +2,7 @@ package edu.sliit.Controller;
 
 import edu.sliit.dto.Product;
 import edu.sliit.service.ProductService;
-import edu.sliit.service.ProductServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
