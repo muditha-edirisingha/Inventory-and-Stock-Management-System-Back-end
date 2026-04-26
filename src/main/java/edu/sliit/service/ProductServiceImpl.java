@@ -34,4 +34,27 @@ public class ProductServiceImpl implements ProductService{
 
 
     }
+
+    @Override
+    public void deleteById(Integer productId) {
+        repository.deleteById(productId);
+    }
+
+    @Override
+    public List<Product> searchByProductName(String productName) {
+        List<Product> products = new ArrayList<>();
+        repository.findByProductName(productName).forEach(entity ->{
+            products.add(mapper.map(entity,Product.class));
+        });
+        return products;
+    }
+
+    @Override
+    public List<Product> searchByProductId(Integer productId) {
+        List<Product> products = new ArrayList<>();
+        repository.findByProductId(productId).forEach(entity ->{
+            products.add(mapper.map(entity,Product.class));
+        });
+        return products;
+    }
 }
