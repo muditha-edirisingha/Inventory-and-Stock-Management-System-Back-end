@@ -1,8 +1,9 @@
-package edu.sliit.service;
+package edu.sliit.service.impl;
 
 import edu.sliit.dto.Product;
 import edu.sliit.entity.ProductEntity;
 import edu.sliit.repository.ProductRepository;
+import edu.sliit.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     final ProductRepository repository;
     final ModelMapper mapper;
