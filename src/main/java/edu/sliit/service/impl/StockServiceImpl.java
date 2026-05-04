@@ -101,7 +101,10 @@ public class StockServiceImpl implements StockService {
     public List<Stock> getStockByProductId(Integer productId) {
         List<Stock> stockList = new ArrayList<>();
         repository.findByProductId(productId).forEach(entity ->{
-            stockList.add(mapper.map(entity,Stock.class));
+
+
+           stockList.add(mapper.map(entity,Stock.class));
+
         });
 
         return stockList;
