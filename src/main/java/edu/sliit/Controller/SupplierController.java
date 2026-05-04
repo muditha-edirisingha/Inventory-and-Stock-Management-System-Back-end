@@ -30,4 +30,15 @@ public class SupplierController {
 
         return service.searchBysupplierId(supplierId);
     }
+
+    @PostMapping("/add-supplier")
+    public void addSupplier(@RequestBody Supplier supplier){
+        service.addSupplier(supplier);
+    }
+
+    @PutMapping("/update-supplier")
+    public void updateSupplier(@RequestBody Supplier supplier){
+        service.addSupplier(supplier);
+    }
+
 }
