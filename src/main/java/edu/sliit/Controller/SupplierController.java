@@ -12,8 +12,21 @@ import java.util.List;
 @RequestMapping("/supplier")
 @RequiredArgsConstructor
 public class SupplierController {
-
     final SupplierService service;
+    @PostMapping("/add-supplier")
+    public void addSupplier(@RequestBody Supplier supplier){
+        service.addSupplier(supplier);
+    }
+
+    @PutMapping("/update-supplier")
+    public void updateSupplier(@RequestBody Supplier supplier){
+        service.addSupplier(supplier);
+    }
+
+    @DeleteMapping("/delete-supplier/{supplierId}")
+    public Boolean deleteSupplier(@PathVariable Integer supplierId){
+        return service.deletebyId(supplierId);
+    }
 
     @GetMapping("/get-all-suppliers")
     public List<Supplier> getAll(){
@@ -30,20 +43,4 @@ public class SupplierController {
 
         return service.searchBysupplierId(supplierId);
     }
-
-    @PostMapping("/add-supplier")
-    public void addSupplier(@RequestBody Supplier supplier){
-        service.addSupplier(supplier);
-    }
-
-    @PutMapping("/update-supplier")
-    public void updateSupplier(@RequestBody Supplier supplier){
-        service.addSupplier(supplier);
-    }
-
-    @DeleteMapping("/delete-supplier/{supplierId}")
-    public Boolean deleteSupplier(@PathVariable Integer supplierId){
-        return service.deletebyId(supplierId);
-    }
-
 }
