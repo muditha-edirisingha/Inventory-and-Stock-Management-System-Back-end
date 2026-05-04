@@ -41,4 +41,9 @@ public class SupplierController {
         service.addSupplier(supplier);
     }
 
+    @DeleteMapping("/delete-supplier/{supplierId}")
+    public Boolean deleteSupplier(@PathVariable Integer supplierId){
+        return service.deletebyId(supplierId);
+    }
+
 }
