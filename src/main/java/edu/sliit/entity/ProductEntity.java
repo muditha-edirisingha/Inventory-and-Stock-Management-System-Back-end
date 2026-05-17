@@ -23,4 +23,6 @@ public class ProductEntity {
     private double unitPrice;
     private int qty;
 
+    private Integer supplierId;
+
 }

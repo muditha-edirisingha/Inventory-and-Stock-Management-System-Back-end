@@ -8,4 +8,6 @@ import java.util.List;
 public interface StockRepository extends JpaRepository<StockEntity,Integer> {
 
     List<StockEntity> findByProductId(Integer productId);
+    void deleteByProductId(Integer productId);
+
 }

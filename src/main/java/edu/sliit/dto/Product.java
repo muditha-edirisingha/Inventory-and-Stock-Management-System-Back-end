@@ -16,4 +16,6 @@ public class Product {
     private double unitPrice;
     private int qty;
 
+    private Integer supplierId;
+
 }

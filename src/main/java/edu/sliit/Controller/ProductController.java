@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/product")
+@CrossOrigin
 public class ProductController {
 
     final ProductService service;
@@ -52,4 +53,11 @@ public class ProductController {
 
         return service.searchByProductId(productId);
     }
+
+    @GetMapping("/search-by-supplierId/{supplierId}")
+    public List<Product> searchBySupplierId(@PathVariable Integer supplierId){
+
+        return service.searchBySupplierId(supplierId);
+    }
+
 }

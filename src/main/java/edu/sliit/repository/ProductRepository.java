@@ -9,4 +9,6 @@ public interface ProductRepository extends JpaRepository<ProductEntity,Integer> 
     List<ProductEntity> findByProductName(String productName);
 
     List<ProductEntity> findByProductId(Integer productId);
+
+    List<ProductEntity> findBySupplierId(Integer supplierId);
 }

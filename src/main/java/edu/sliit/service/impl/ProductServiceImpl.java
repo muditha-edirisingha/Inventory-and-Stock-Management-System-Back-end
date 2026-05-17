@@ -3,10 +3,12 @@ package edu.sliit.service.impl;
 import edu.sliit.dto.Product;
 import edu.sliit.entity.ProductEntity;
 import edu.sliit.repository.ProductRepository;
+import edu.sliit.repository.StockRepository;
 import edu.sliit.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ public class ProductServiceImpl implements ProductService {
 
     final ProductRepository repository;
     final ModelMapper mapper;
+    final StockRepository stockRepository;
 
     @Override
     public  List<Product> getProduct() {
@@ -36,7 +39,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void deleteById(Integer productId) {
+
+        stockRepository.deleteByProductId(productId);
+
         repository.deleteById(productId);
     }
 
@@ -53,6 +60,15 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> searchByProductId(Integer productId) {
         List<Product> products = new ArrayList<>();
         repository.findByProductId(productId).forEach(entity ->{
+            products.add(mapper.map(entity,Product.class));
+        });
+        return products;
+    }
+
+    @Override
+    public List<Product> searchBySupplierId(Integer supplierId) {
+        List<Product> products = new ArrayList<>();
+        repository.findBySupplierId(supplierId).forEach(entity ->{
             products.add(mapper.map(entity,Product.class));
         });
         return products;
