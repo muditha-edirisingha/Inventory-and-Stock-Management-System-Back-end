@@ -4,11 +4,14 @@ import edu.sliit.dto.Product;
 import edu.sliit.entity.ProductEntity;
 import edu.sliit.repository.ProductRepository;
 import edu.sliit.repository.StockRepository;
+import edu.sliit.repository.SupplierRepository;
 import edu.sliit.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,7 @@ public class ProductServiceImpl implements ProductService {
     final ProductRepository repository;
     final ModelMapper mapper;
     final StockRepository stockRepository;
+    final SupplierRepository supplierRepository;
 
     @Override
     public  List<Product> getProduct() {
@@ -33,8 +37,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(Product product) {
-        repository.save(mapper.map(product, ProductEntity.class));
 
+        boolean supplierExists = supplierRepository.existsBySupplierId(product.getSupplierId());
+
+        if (!supplierExists) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Supplier ID not found"
+            );
+        }
+        repository.save(mapper.map(product, ProductEntity.class));
 
     }
 
@@ -43,7 +55,6 @@ public class ProductServiceImpl implements ProductService {
     public void deleteById(Integer productId) {
 
         stockRepository.deleteByProductId(productId);
-
         repository.deleteById(productId);
     }
 

@@ -43,6 +43,7 @@ public class StockServiceImpl implements StockService {
         stock.setQuntityAdded(addedQty);
         stock.setQuntityRemoved(0);
         stock.setCurrentQuntity(newQty);
+        stock.setStockType("STOCK IN");
         stock.setDateTime(LocalDateTime.now());
 
         repository.save(mapper.map(stock, StockEntity.class));
@@ -73,82 +74,34 @@ public class StockServiceImpl implements StockService {
         stock.setQuntityAdded(0);
         stock.setQuntityRemoved(removedQty);
         stock.setCurrentQuntity(newQty);
+        stock.setStockType("STOCK OUT");
         stock.setDateTime(LocalDateTime.now());
 
         repository.save(mapper.map(stock, StockEntity.class));
-
-
-
     }
-
-
     @Override
     public List<Stock> getAll() {
 
         List<Stock> stockList = new ArrayList<>();
-
-        repository.findAll().forEach(entity -> {
-
-            Stock stock = mapper.map(entity, Stock.class);
-
-            // Set stock type
-            if (stock.getQuntityAdded() != null && stock.getQuntityAdded() > 0) {
-
-                stock.setStockType("STOCK IN");
-
-            } else if (stock.getQuntityRemoved() != null && stock.getQuntityRemoved() > 0) {
-
-                stock.setStockType("STOCK OUT");
-
-            } else {
-
-                stock.setStockType("UNKNOWN");
-            }
-
-            stockList.add(stock);
-
+        repository.findAll().forEach(entity ->{
+            stockList.add(mapper.map(entity,Stock.class));
         });
-
         return stockList;
     }
 
     @Override
     public Stock getStockById(Integer stockId) {
+        return mapper.map(repository.findById(stockId),Stock.class);
 
-        Stock stock = mapper.map(repository.findById(stockId).get(), Stock.class);
-
-        if (stock.getQuntityAdded() != null && stock.getQuntityAdded() > 0) {
-            stock.setStockType("STOCK IN");
-        } else if (stock.getQuntityRemoved() != null && stock.getQuntityRemoved() > 0) {
-            stock.setStockType("STOCK OUT");
-        } else {
-            stock.setStockType("UNKNOWN");
-        }
-
-        return stock;
     }
 
     @Override
     public List<Stock> getStockByProductId(Integer productId) {
-
         List<Stock> stockList = new ArrayList<>();
-
-        repository.findByProductId(productId).forEach(entity -> {
-
-            Stock stock = mapper.map(entity, Stock.class);
-
-            if (stock.getQuntityAdded() != null && stock.getQuntityAdded() > 0) {
-                stock.setStockType("STOCK IN");
-            } else if (stock.getQuntityRemoved() != null && stock.getQuntityRemoved() > 0) {
-                stock.setStockType("STOCK OUT");
-            } else {
-                stock.setStockType("UNKNOWN");
-            }
-
-            stockList.add(stock);
+        repository.findByProductId(productId).forEach(entity ->{
+            stockList.add(mapper.map(entity,Stock.class));
 
         });
-
         return stockList;
     }
 }

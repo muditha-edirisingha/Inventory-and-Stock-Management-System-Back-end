@@ -10,4 +10,6 @@ public interface SupplierRepository extends JpaRepository<SupplierEntity,Integer
     List<SupplierEntity> findBysupplierName(String supplierName);
 
     List<SupplierEntity> findBysupplierId(Integer supplierId);
+
+    boolean existsBySupplierId(Integer supplierId);
 }
