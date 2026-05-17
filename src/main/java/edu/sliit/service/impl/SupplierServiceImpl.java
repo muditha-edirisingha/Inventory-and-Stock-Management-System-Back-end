@@ -56,4 +56,9 @@ public class SupplierServiceImpl implements SupplierService{
         });
         return suppliers;
     }
+
+    @Override
+    public long getSupplierCount() {
+        return repository.count();
+    }
 }

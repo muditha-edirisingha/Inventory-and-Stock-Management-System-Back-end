@@ -60,4 +60,9 @@ public class ProductController {
         return service.searchBySupplierId(supplierId);
     }
 
+    @GetMapping("/count")
+    public long getProductCount() { 
+        return service.getProductCount();
+    }
+
 }

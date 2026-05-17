@@ -15,4 +15,6 @@ public interface ProductService  {
     List<Product> searchByProductId(Integer productId);
 
     List<Product> searchBySupplierId(Integer supplierId);
+
+    long getProductCount();
 }

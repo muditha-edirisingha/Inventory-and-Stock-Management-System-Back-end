@@ -84,4 +84,9 @@ public class ProductServiceImpl implements ProductService {
         });
         return products;
     }
+
+    @Override
+    public long getProductCount() {
+        return repository.count();
+    }
 }

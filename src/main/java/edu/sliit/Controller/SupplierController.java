@@ -43,4 +43,8 @@ public class SupplierController {
 
         return service.searchBysupplierId(supplierId);
     }
+    @GetMapping("/count")
+    public long getSupplierCount() {
+        return service.getSupplierCount();
+    }
 }

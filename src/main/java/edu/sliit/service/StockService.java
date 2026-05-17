@@ -13,4 +13,8 @@ public interface StockService {
     Stock getStockById(Integer stockId);
 
     List<Stock> getStockByProductId(Integer productId);
+
+    long getStockOutCount();
+
+    long getStockInCount();
 }

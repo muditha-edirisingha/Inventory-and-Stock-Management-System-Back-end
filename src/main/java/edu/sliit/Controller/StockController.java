@@ -44,4 +44,14 @@ public class StockController {
     public List<Stock> getStockByProductId(@PathVariable Integer productId){
         return stockService.getStockByProductId(productId);
     }
+
+    @GetMapping("/stock-in-count")
+    public long getStockInCount() {
+        return stockService.getStockInCount();
+    }
+
+    @GetMapping("/stock-out-count")
+    public long getStockOutCount() {
+        return stockService.getStockOutCount();
+    }
 }

@@ -104,4 +104,14 @@ public class StockServiceImpl implements StockService {
         });
         return stockList;
     }
+
+    @Override
+    public long getStockOutCount() {
+        return repository.countByStockType("STOCK OUT");
+    }
+
+    @Override
+    public long getStockInCount() {
+        return repository.countByStockType("STOCK IN");
+    }
 }

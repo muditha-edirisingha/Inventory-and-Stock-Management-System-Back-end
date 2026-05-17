@@ -14,4 +14,6 @@ public interface SupplierService {
     List<Supplier> searchBysupplierName(String supplierName);
 
     List<Supplier> searchBysupplierId(Integer supplierId);
+
+    long getSupplierCount();
 }
