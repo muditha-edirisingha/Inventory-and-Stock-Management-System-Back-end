@@ -13,4 +13,6 @@ public interface ProductService  {
     List<Product> searchByProductName(String productName);
 
     List<Product> searchByProductId(Integer productId);
+
+    List<Product> searchBySupplierId(Integer supplierId);
 }
