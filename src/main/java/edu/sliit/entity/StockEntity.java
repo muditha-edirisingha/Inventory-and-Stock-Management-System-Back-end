@@ -26,7 +26,7 @@ public class StockEntity {
     private String stockType;
 
     private Integer productId;
-    
+
 
 
 
