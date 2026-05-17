@@ -20,6 +20,7 @@ public class SupplierServiceImpl implements SupplierService{
     final SupplierRepository repository;
     @Override
     public void addSupplier(Supplier supplier) {
+
         repository.save(mapper.map(supplier, SupplierEntity.class));
     }
 

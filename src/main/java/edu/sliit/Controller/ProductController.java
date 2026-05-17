@@ -61,7 +61,7 @@ public class ProductController {
     }
 
     @GetMapping("/count")
-    public long getProductCount() { 
+    public long getProductCount() {
         return service.getProductCount();
     }
 
