@@ -23,8 +23,10 @@ public class StockEntity {
     private Integer quntityRemoved;
     private Integer currentQuntity;
     private LocalDateTime dateTime;
+    private String stockType;
 
     private Integer productId;
+    
 
 
 
