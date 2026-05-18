@@ -17,4 +17,6 @@ public interface ProductService  {
     List<Product> searchBySupplierId(Integer supplierId);
 
     long getProductCount();
+
+    void updateProduct(Product product);
 }

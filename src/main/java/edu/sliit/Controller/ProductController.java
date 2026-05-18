@@ -39,7 +39,7 @@ public class ProductController {
     @ResponseStatus(HttpStatus.OK)
     public void updateProduct(@RequestBody Product product){
 
-        service.addProduct(product);
+        service.updateProduct(product);
     }
 
     @GetMapping("/search-by-name/{productName}")

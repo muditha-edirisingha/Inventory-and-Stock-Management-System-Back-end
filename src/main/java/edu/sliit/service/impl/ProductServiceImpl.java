@@ -89,4 +89,9 @@ public class ProductServiceImpl implements ProductService {
     public long getProductCount() {
         return repository.count();
     }
+
+    @Override
+    public void updateProduct(Product product) {
+        repository.save(mapper.map(product, ProductEntity.class));
+    }
 }
